@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Bohull</title>
+
+  <style>
+    :root {
+      --navy: #1e2a39;
+      --light-gray: #f7f7f7;
+      --med-gray: #dcdcdc;
+      --dark-text: #222;
+      --muted-text: #555;
+      --radius: 12px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--light-gray);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--navy);
+      color: #fff;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--med-gray);
+      padding: 12px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 600;
+      padding-bottom: 4px;
+      transition: 0.25s;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover {
+      border-bottom: 2px solid var(--navy);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 50px auto;
+      background: white;
+      padding: 45px;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.9rem;
+      color: var(--navy);
+    }
+
+    .wip {
+      font-size: 1.2rem;
+      color: var(--muted-text);
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted-text);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Projects</h1>
+    <p>A collection of things I'm building and experimenting with.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="container">
+    <h2>Work in Progress</h2>
+    <p class="wip">
+      This page is under construction.  
+      Check back soon for my latest experiments and project ideas.
+    </p>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Bohull — Built with GitHub Pages
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
