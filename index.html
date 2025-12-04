@@ -3,100 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Bohull's Site</title>
+  <title>Bohull — Personal Site</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f4f4;
-      color: #222;
-      line-height: 1.6;
+    /* ---------- GLOBAL ---------- */
+    :root {
+      --navy: #1e2a39;
+      --light-gray: #f7f7f7;
+      --med-gray: #dcdcdc;
+      --dark-text: #222;
+      --muted-text: #555;
+      --radius: 12px;
     }
 
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--light-gray);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    /* ---------- HEADER ---------- */
     header {
-      background: #333;
+      background: var(--navy);
       color: #fff;
-      padding: 20px;
+      padding: 70px 20px;
       text-align: center;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+      font-weight: 600;
     }
 
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+
+    /* ---------- NAV ---------- */
     nav {
-      background: #444;
-      padding: 10px;
+      background: #fff;
+      border-bottom: 1px solid var(--med-gray);
+      padding: 12px 0;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     nav a {
-      color: #fff;
-      margin: 0 15px;
+      margin: 0 18px;
       text-decoration: none;
-      font-weight: bold;
+      color: var(--navy);
+      font-weight: 600;
+      padding-bottom: 4px;
+      transition: 0.25s;
+      border-bottom: 2px solid transparent;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      border-bottom: 2px solid var(--navy);
     }
 
+    /* ---------- CONTAINER ---------- */
     .container {
-      max-width: 900px;
-      margin: 40px auto;
+      max-width: 850px;
+      margin: 50px auto;
       background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 45px;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
     }
 
+    h2 {
+      margin-top: 0;
+      font-size: 1.9rem;
+      color: var(--navy);
+    }
+
+    h3 {
+      margin-top: 2rem;
+      color: var(--navy);
+    }
+
+    ul li {
+      margin: 8px 0;
+    }
+
+    /* ---------- FOOTER ---------- */
     footer {
       text-align: center;
-      padding: 20px;
-      color: #555;
-      margin-top: 40px;
+      padding: 30px;
+      color: var(--muted-text);
+      font-size: 0.95rem;
     }
   </style>
-</head>
 
+</head>
 <body>
+
   <header>
     <h1>Bohull's Personal Site</h1>
-    <p>Welcome to my testing ground for web projects and experiments.</p>
+    <p>A minimalist space for experiments, ideas, and projects.</p>
   </header>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
-    <a href="about.html">About Me</a>
+    <a href="about.html">About</a>
   </nav>
 
   <div class="container">
-    <h2>Hello!</h2>
+    <h2>Welcome</h2>
     <p>
-      This is my personal site hosted on GitHub Pages. I'm using this space to test ideas, try out new web technologies, and build my own projects.
+      This is my personal site hosted on GitHub Pages. I'm using it as a place to test concepts, try new ideas,
+      and build small experimental projects.
     </p>
 
-    <h3>What you’ll find here</h3>
+    <h3>On this site</h3>
     <ul>
-      <li>Small experiments with HTML, CSS, and JavaScript</li>
-      <li>Links to project demos</li>
-      <li>Personal notes and ideas</li>
+      <li>Minimal HTML/CSS/JS experiments</li>
+      <li>Small project demos</li>
+      <li>Design and code tests</li>
+      <li>Notes about what I'm learning</li>
     </ul>
 
     <p>
-      Feel free to check back as the site grows and evolves!
+      Check back occasionally — things will evolve here over time.
     </p>
   </div>
 
   <footer>
-    © <span id="year"></span> Bohull — Powered by GitHub Pages
+    © <span id="year"></span> Bohull — Built with GitHub Pages
   </footer>
 
   <script>
-    // Automatically updates the year in the footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
