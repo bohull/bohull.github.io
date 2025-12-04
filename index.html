@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Bohull's Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    nav {
+      background: #444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #555;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Bohull's Personal Site</h1>
+    <p>Welcome to my testing ground for web projects and experiments.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About Me</a>
+  </nav>
+
+  <div class="container">
+    <h2>Hello!</h2>
+    <p>
+      This is my personal site hosted on GitHub Pages. I'm using this space to test ideas, try out new web technologies, and build my own projects.
+    </p>
+
+    <h3>What you’ll find here</h3>
+    <ul>
+      <li>Small experiments with HTML, CSS, and JavaScript</li>
+      <li>Links to project demos</li>
+      <li>Personal notes and ideas</li>
+    </ul>
+
+    <p>
+      Feel free to check back as the site grows and evolves!
+    </p>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Bohull — Powered by GitHub Pages
+  </footer>
+
+  <script>
+    // Automatically updates the year in the footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
