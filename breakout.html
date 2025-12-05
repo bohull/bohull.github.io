@@ -95,7 +95,12 @@
 
     function drawPaddle() {
       ctx.beginPath();
-      ctx.rect(paddleX, canvas.height - paddleHeight - 5, paddleWidth, paddleHeight);
+      ctx.rect(
+        paddleX,
+        canvas.height - paddleHeight - 5,
+        paddleWidth,
+        paddleHeight
+      );
       ctx.fillStyle = "#1e2a39";
       ctx.fill();
       ctx.closePath();
@@ -109,8 +114,10 @@
               c * (brickWidth + brickPadding) + brickOffsetLeft;
             const brickY =
               r * (brickHeight + brickPadding) + brickOffsetTop;
+
             bricks[c][r].x = brickX;
             bricks[c][r].y = brickY;
+
             ctx.beginPath();
             ctx.rect(brickX, brickY, brickWidth, brickHeight);
             ctx.fillStyle = "#dcdcdc";
@@ -133,20 +140,36 @@
       ctx.fillText("Lives: " + lives, canvas.width - 70, 20);
     }
 
+    // Improved brick collision – uses ball radius and side vs top/bottom
     function collisionDetection() {
       for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
           const b = bricks[c][r];
           if (b.status === 1) {
-            if (
-              x > b.x &&
-              x < b.x + brickWidth &&
-              y > b.y &&
-              y < b.y + brickHeight
-            ) {
-              dy = -dy;
+            const hit =
+              x + ballRadius > b.x &&
+              x - ballRadius < b.x + brickWidth &&
+              y + ballRadius > b.y &&
+              y - ballRadius < b.y + brickHeight;
+
+            if (hit) {
+              const overlapLeft   = (x + ballRadius) - b.x;
+              const overlapRight  = (b.x + brickWidth) - (x - ballRadius);
+              const overlapTop    = (y + ballRadius) - b.y;
+              const overlapBottom = (b.y + brickHeight) - (y - ballRadius);
+
+              const minOverlapX = Math.min(overlapLeft, overlapRight);
+              const minOverlapY = Math.min(overlapTop, overlapBottom);
+
+              if (minOverlapX < minOverlapY) {
+                dx = -dx; // side hit
+              } else {
+                dy = -dy; // top/bottom hit
+              }
+
               b.status = 0;
               score++;
+
               if (score === brickRowCount * brickColumnCount) {
                 alert("You win! 🎉");
                 document.location.reload();
@@ -157,6 +180,7 @@
       }
     }
 
+    // Main loop with angle-based paddle bounce
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -171,13 +195,35 @@
       if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
       }
+
       if (y + dy < ballRadius) {
         dy = -dy;
       } else if (y + dy > canvas.height - ballRadius - paddleHeight) {
-        // Paddle / bottom collision
+        // Paddle / bottom zone
         if (x > paddleX && x < paddleX + paddleWidth) {
-          dy = -dy;
+          // Angle-based bounce off paddle
+
+          // Place ball just above the paddle to avoid clipping
+          y = canvas.height - paddleHeight - ballRadius - 5;
+
+          const paddleCenter = paddleX + paddleWidth / 2;
+          const distFromCenter = x - paddleCenter;
+
+          // Normalize hit position: -1 (left) to 1 (right)
+          const normalized = distFromCenter / (paddleWidth / 2);
+
+          // Max bounce angle from vertical (in radians)
+          const maxBounceAngle = Math.PI / 3; // 60 degrees
+
+          const bounceAngle = normalized * maxBounceAngle;
+
+          // Preserve overall speed
+          const speed = Math.sqrt(dx * dx + dy * dy);
+
+          dx = speed * Math.sin(bounceAngle);
+          dy = -speed * Math.cos(bounceAngle); // always going up after paddle
         } else if (y + dy > canvas.height - ballRadius) {
+          // Missed paddle → lose life
           lives--;
           if (!lives) {
             alert("Game over 😢");
@@ -200,6 +246,7 @@
         paddleX -= 5;
       }
 
+      // Move ball
       x += dx;
       y += dy;
 
