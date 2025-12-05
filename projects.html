@@ -97,6 +97,65 @@
       color: var(--muted-text);
       font-size: 0.95rem;
     }
+
+    /* Project Cards */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    /* Make the whole card clickable but still look like a card, not a link */
+    .project-card {
+      display: block;
+      background: #ffffff;
+      border-radius: var(--radius);
+      border: 1px solid var(--med-gray);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+                  border-color 0.15s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      border-color: var(--navy);
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--med-gray);
+    }
+
+    .project-body {
+      padding: 18px 20px 20px;
+    }
+
+    .project-title {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 1.1rem;
+    }
+
+    .project-text {
+      margin: 0 0 10px;
+      color: var(--muted-text);
+      font-size: 0.95rem;
+    }
+
+    .project-link-text {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 0.95rem;
+    }
+
   </style>
 </head>
 
@@ -114,11 +173,19 @@
   </nav>
 
   <div class="container">
-    <h2>Work in Progress</h2>
-    <p class="wip">
-      This page is under construction.  
-      Check back soon for my latest experiments and project ideas.
-    </p>
+    <h2>Projects</h2>
+    <div class="projects-grid">
+    <a href="breakout.html" class="project-card">
+      <!-- <img src="images/breakout-thumbnail.png" alt="Breakout game preview" class="project-image"> -->
+      <div class="project-body">
+        <h3 class="project-title">Breakout Game</h3>
+        <p class="project-text">
+          A simple browser-based Breakout clone built with HTML5 canvas and JavaScript.
+        </p>
+        <span class="project-link-text">Play game →</span>
+      </div>
+    </a>
+  </div>
   </div>
 
   <footer>
